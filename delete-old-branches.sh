@@ -104,7 +104,7 @@ main() {
     # fetch history etc
     local sha
     git config --global --add safe.directory "${GITHUB_WORKSPACE}"
-    git fetch --prune --tags
+    git fetch --prune --tags --force
     for br in $(git ls-remote -q --heads --refs | sed "s@^.*heads/@@"); do
         if [[ -z "$(git log --oneline -1 --since="${DATE}" origin/"${br}")" ]]; then
             sha=$(git show-ref -s "origin/${br}")
